@@ -33,8 +33,7 @@ export class SideBarComponent {
       {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
-        router: ['/', 'favorites'],
-        query: { hola: 'mundo' }
+        router: ['/', 'favorites']
       }
     ]
 
