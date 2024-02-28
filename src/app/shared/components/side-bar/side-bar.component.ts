@@ -25,6 +25,7 @@ export class SideBarComponent {
         icon: 'uil uil-estate',
         router: ['/', '']
       },
+      
       {
         name: 'Buscar',
         icon: 'uil uil-search',
