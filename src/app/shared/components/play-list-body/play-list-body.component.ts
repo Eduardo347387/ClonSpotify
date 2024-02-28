@@ -12,10 +12,10 @@ export class PlayListBodyComponent implements OnInit{
 
   optionSort:{
     property: string | null,
-    Order:string
+    order:string
   } = {
     property: null,
-    Order: 'asc'
+    order: 'asc'
   }
   
   ngOnInit(): void {
@@ -24,7 +24,11 @@ export class PlayListBodyComponent implements OnInit{
   }
 
   changeSort(property:string):void{
-      
+    const { order } = this.optionSort
+    this.optionSort = {
+      property,
+      order:order === 'asc'? 'desc': 'asc'
+    }
   }
 
 }
