@@ -1,6 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@modules/auth/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-auth-page',
@@ -8,9 +10,11 @@ import { AuthService } from '@modules/auth/services/auth.service';
   styleUrls: ['./auth-page.component.scss']
 })
 export class AuthPageComponent implements OnInit{
+  errorSession: Boolean = false;
   formLogin: FormGroup = new FormGroup({});
-
   private _authService = inject(AuthService);
+  private _cookie = inject(CookieService)
+  private _router = inject(Router)
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -29,6 +33,15 @@ export class AuthPageComponent implements OnInit{
   }
   sedLogin() {
     const {gmail,password} = this.formLogin.value;
-    this._authService.serCredencials(gmail,password)
+    this._authService.serCredencials(gmail, password)
+      .subscribe({
+        next: responseOk => { 
+          this._router.navigate(['/','tracks'])
+        },
+        error: err => {
+          this.errorSession = true
+          
+        }
+    })
   }
 }
