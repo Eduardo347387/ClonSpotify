@@ -14,7 +14,6 @@ export class CardPlayerComponent {
   private _multimediaService = inject(MultimediaService);
 
   sedPlay(track: TracksModel | undefined): void{
-  
-    this._multimediaService.callback.emit(track);
+    this._multimediaService.trackInfo$.next(track)
   }
 }
