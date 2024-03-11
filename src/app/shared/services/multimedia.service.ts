@@ -13,7 +13,7 @@ export class MultimediaService {
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00');
   public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject('00:00');
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused');
-  
+  public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0);
   public audio!: HTMLAudioElement;
 
   constructor() { 
@@ -42,16 +42,42 @@ export class MultimediaService {
     this.audio.addEventListener('end', this.setPlayerStatus, false)
   }
 
-  private setPlayerStatus = () => {
-    
+  private setPlayerStatus = (state:any) => {
+    switch (state.type) {
+      case 'play':
+        this.playerStatus$.next('play');
+        break;
+      case 'playing':
+        this.playerStatus$.next('playing');
+        break;
+      case 'ended':
+        this.playerStatus$.next('ended');
+        break;
+      default:
+        this.playerStatus$.next('paused');
+    }
+  }
+
+  public togglePlayer(): void{
+    (this.audio.paused) ? this.audio.play() : this.audio.pause()
+  }
+
+  public seekAudio(percentage: number): void{
+    const { duration } = this.audio
+    const percentageToSecond = (percentage * duration) / 100
+    this.audio.currentTime = percentageToSecond
+  }
+
+  private setPercentage(currentTime: number, duration: number): void{
+    let percentage = (currentTime * 100) / duration;
+    this.playerPercentage$.next(percentage);
   }
 
   private calcularTime = ():void =>{
     const { duration, currentTime } = this.audio
     this.setTimeElapsed(currentTime)
-    this.setRemainig(currentTime,duration)
-    console.table([duration, currentTime])
-    
+    this.setRemainig(currentTime, duration)
+    this.setPercentage(currentTime,duration)
   }
 
 
