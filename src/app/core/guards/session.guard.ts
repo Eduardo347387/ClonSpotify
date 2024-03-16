@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 export const sessionGuard: CanActivateFn = (route, state) => {
   const _cookieService = inject(CookieService)
+  
   const _router = inject(Router)
   try {
     const token = _cookieService.check('token_service')
