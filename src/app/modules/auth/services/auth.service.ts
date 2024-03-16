@@ -14,6 +14,8 @@ export class AuthService {
   private _http = inject(HttpClient);
   private cookie = inject(CookieService);
 
+  constructor() { }
+  
   serCredencials(email: string, password: string): Observable <any>{
     const body = {
       email, password
