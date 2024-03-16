@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "clonSpotify:build:production"
+              "buildTarget": "clonSpotify:build:production"
             },
             "development": {
-              "browserTarget": "clonSpotify:build:development"
+              "buildTarget": "clonSpotify:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clonSpotify:build"
+            "buildTarget": "clonSpotify:build"
           }
         },
         "test": {
