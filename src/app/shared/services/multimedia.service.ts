@@ -23,11 +23,7 @@ export class MultimediaService {
       next: responseOk => {
         if (responseOk) {
           this.setAudio(responseOk)
-          console.log(responseOk)
         }
-      },
-      error: e=>{
-        console.log(e)
       }
     })
 
@@ -103,7 +99,7 @@ export class MultimediaService {
 
   public setAudio(track: TracksModel): void {
     this.audio.src = track.url
-    console.log( this.audio.src)
+
     this.audio.play() 
  
   } 
