@@ -23,7 +23,9 @@ export class AuthService {
     return this._http.post(`${this.URL}/auth/login`,body)
       .pipe(
         tap((responseOk: any) => {
-          const { tokenSession} = responseOk
+          const { data, tokenSession } = responseOk
+          this.cookie.set("gmail",data.gmail, 4, "/")
+          this.cookie.set("password",data.password,4,"/")
           this.cookie.set('token_service',tokenSession,4,'/')
       })
     )

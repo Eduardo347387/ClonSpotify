@@ -2,7 +2,6 @@ import { Component, OnInit, inject, Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@modules/auth/services/auth.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-auth-page',
@@ -13,7 +12,6 @@ export class AuthPageComponent implements OnInit{
   errorSession: Boolean = false;
   formLogin: FormGroup = new FormGroup({});
   private _authService = inject(AuthService);
-  private _cookie = inject(CookieService)
   private _router = inject(Router)
 
   ngOnInit(): void {
@@ -40,7 +38,6 @@ export class AuthPageComponent implements OnInit{
         },
         error: err => {
           this.errorSession = true
-          
         }
     })
   }

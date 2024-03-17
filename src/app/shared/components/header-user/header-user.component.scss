@@ -1,0 +1,24 @@
+.button{
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .8rem;
+    height: 2rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    padding-right: .8rem;
+    .avatar{
+        background-color: aliceblue;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+    }
+    .user{
+        font-size: .8rem;
+        letter-spacing: .1rem;
+        color: white;
+    }
+}
