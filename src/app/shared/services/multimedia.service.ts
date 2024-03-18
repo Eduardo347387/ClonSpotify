@@ -14,6 +14,7 @@ export class MultimediaService {
   public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject('00:00');
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused');
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0);
+  public positionTrack$: BehaviorSubject<any> = new BehaviorSubject(0);
   public audio!: HTMLAudioElement;
 
   constructor() { 

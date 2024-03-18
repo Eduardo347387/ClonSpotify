@@ -45,7 +45,8 @@ export class SideBarComponent {
       },
       {
         name: 'Canciones que te gustan',
-        icon: 'uil-heart-medical'
+        icon: 'uil-heart-medical',
+        router: ['/', 'favorites']
       }
     ]
 

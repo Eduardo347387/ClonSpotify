@@ -1,4 +1,11 @@
-<div class="button">
-    <img class="avatar" src="{{avatar}}" alt="Avatar User">
-    <p class="user">{{name}}</p>
+<div class="conteiner">
+    <div (click)="closeSession()" class="close button">
+        <p class="user">Cerrar Sesion</p>
+    </div>
+
+    <div class="button">
+        <img class="avatar" src="{{avatar}}" alt="Avatar User">
+        <p class="user">{{name}}</p>
+    </div>
+    
 </div>

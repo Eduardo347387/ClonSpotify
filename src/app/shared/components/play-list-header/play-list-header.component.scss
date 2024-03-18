@@ -1,14 +1,23 @@
 .play-list-header {
     display: flex;
-    height: 18rem;
+    height: 20rem;
     width: 100%;
     padding-top: 3rem;
     padding-bottom: 1rem;
     background-color: #ffffff14;
 }
 
-.content-text {
-    padding: 1.5rem 0;
+.user{
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+    .avatar{
+        border-radius: 50%;
+        width: 1.8rem;   
+    }
+}
+
+.content-text { 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

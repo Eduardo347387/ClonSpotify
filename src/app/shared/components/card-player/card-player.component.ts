@@ -15,5 +15,6 @@ export class CardPlayerComponent {
 
   sedPlay(track: TracksModel | undefined): void{
     this._multimediaService.trackInfo$.next(track)
+    this._multimediaService.positionTrack$.next(track?._id)
   }
 }

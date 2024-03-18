@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 
 import { TracksModel } from '@core/models/tracks.model';
 import { OrderListPipe } from '../../pipes/order-list.pipe';
+import { MultimediaService } from '@shared/services/multimedia.service';
 @Component({
   selector: 'app-play-list-body',
   templateUrl: './play-list-body.component.html',
@@ -9,7 +10,8 @@ import { OrderListPipe } from '../../pipes/order-list.pipe';
 })
 export class PlayListBodyComponent implements OnInit{
   @Input() tracks: TracksModel[] = []
-
+  private _multimediaService = inject(MultimediaService)
+  
   optionSort:{
     property: string | null,
     order:string
@@ -20,6 +22,11 @@ export class PlayListBodyComponent implements OnInit{
   
   ngOnInit(): void {
   
+  }
+
+  sedPlay(track: TracksModel | undefined): void{
+    this._multimediaService.trackInfo$.next(track)
+    this._multimediaService.positionTrack$.next(track?._id)
   }
 
   changeSort(property:string):void{
