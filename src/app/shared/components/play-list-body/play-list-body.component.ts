@@ -1,16 +1,23 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 
 import { TracksModel } from '@core/models/tracks.model';
 import { OrderListPipe } from '../../pipes/order-list.pipe';
 import { MultimediaService } from '@shared/services/multimedia.service';
+import { Subscription } from 'rxjs';
+
+
 @Component({
   selector: 'app-play-list-body',
   templateUrl: './play-list-body.component.html',
   styleUrls: ['./play-list-body.component.scss']
 })
-export class PlayListBodyComponent implements OnInit{
+  
+export class PlayListBodyComponent implements OnInit, OnDestroy{
   @Input() tracks: TracksModel[] = []
-  private _multimediaService = inject(MultimediaService)
+  public _multimediaService = inject(MultimediaService)
+  private listObservable$: Array<Subscription> = [];
+
+  idTrack: number = 0
   
   optionSort:{
     property: string | null,
@@ -18,15 +25,28 @@ export class PlayListBodyComponent implements OnInit{
   } = {
     property: null,
     order: 'asc'
+    }
+  
+
+  ngOnInit(): void {
+    const observer1$ = this._multimediaService.trackInfo$
+      .subscribe({
+        next: track => {
+          if (track) {
+            this.idTrack = track._id
+        }
+      }
+    })
+    this.listObservable$ = [observer1$]
+
   }
   
-  ngOnInit(): void {
-  
+  ngOnDestroy(): void {
+      this.listObservable$.forEach(u=>u.unsubscribe())
   }
 
   sedPlay(track: TracksModel | undefined): void{
     this._multimediaService.trackInfo$.next(track)
-    this._multimediaService.positionTrack$.next(track?._id)
   }
 
   changeSort(property:string):void{

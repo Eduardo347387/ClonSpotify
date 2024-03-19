@@ -13,10 +13,10 @@
             {{track.album }}
         </li>
         <li class="track-name-opacity">
-            {{track.album}}
+            Fed,11,2024
         </li>
         <li class="track-name-opacity">
-            {{track.album}} 
+            3:43
         </li>
 
     </ul>
@@ -28,7 +28,7 @@
     <div class="cover-section">
         <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
         <div class="cover-info">
-            <div class="name-track">{{track.name}}</div>
+            <div [ngClass]="{'active':track._id === idTrack}" class="name-track ">{{track.name}}</div>
             <div class="name-track-details">{{track.artist.name}}</div>
         </div>
     </div>

@@ -1,50 +1,72 @@
-.side-bar {
-    width: 15.5rem;
-    height: 100vh;
+
+.side-bar{
     position: fixed;
-    top: 0;
-    left: 0;
-    padding: .5rem 1rem;
-    /* background-color: red; */
+    bottom: 0;
+    height: 3.8rem;
+    width: 100%;
+    background-color: black;
+    
+    .side-bar__list{
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        opacity: .8;
+        .list-wrapper-item{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .uil{
+                font-size: 1.5rem;
+            }
+            .list-label{
+               font-size: .6rem;
+            }
+        }
+    }
+    .list-one{
+        padding-top: .4rem;
+        justify-content: center;
+        column-gap: 2.2rem;
+    }
+    .list-two,.list-three,.uil-ellipsis-h{
+        display: none;
+    }
 }
 
-.side-bar__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    opacity: .8;
-}
 
-.side-bar__list .list-label {
-    font-size: 90%;
-    font-weight: 500;
-}
+@media(min-width:760px){
+   .side-bar{
+     top: 0;
+     width: 15.5rem;
+     padding-top: 1rem;
+     padding-left: 1rem;
+     .side-bar__list{
+        flex-direction: column;
+        .list-wrapper-item{
+            flex-direction: row;
+            column-gap: 1.3rem;
+            .uil{
+                font-size: 1.5rem;
+            }
+            .list-label{
+                font-size: .9rem;
+            }
+        }
+    }
 
-.side-bar__list .list-wrapper-item {
-    font-size: var(--font-size-1);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    align-content: center;
-}
+    .side-bar__separator {
+        margin: 1rem 0;
+    }
 
-.side-bar__list .list-wrapper-item .uil {
-    font-size: var(--font-size-3);
-    padding-right: .5rem;
-}
+    .side-bar__separator.line-separator {
+        border-bottom: solid 1px var(--color-2);
+    }
 
-.side-bar__separator {
-    margin: 1rem 0;
-}
-
-.side-bar__separator.line-separator {
-    border-bottom: solid 1px var(--color-2);
-}
-
-.side-bar__list.list-three .list-wrapper-item {
-    padding: .25rem 0;
-}
-
-.side-bar__list li {
-    cursor: pointer;
+    .list-two,
+    .list-three,
+    .uil-ellipsis-h {
+        display: block;
+    }
+   }
 }

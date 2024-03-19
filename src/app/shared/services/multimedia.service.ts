@@ -16,6 +16,7 @@ export class MultimediaService {
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0);
   public positionTrack$: BehaviorSubject<any> = new BehaviorSubject(0);
   public audio!: HTMLAudioElement;
+ 
 
   constructor() { 
     this.audio = new Audio()
@@ -24,6 +25,7 @@ export class MultimediaService {
       next: responseOk => {
         if (responseOk) {
           this.setAudio(responseOk)
+          this.positionTrack$.next(responseOk._id)
         }
       }
     })
@@ -81,7 +83,6 @@ export class MultimediaService {
   private setTimeElapsed(currentTime:number):void {
     let seconds = Math.floor(currentTime % 60)
     let minutes = Math.floor((currentTime / 60) % 60)
-
     const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds
     const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes
     const displayFormat = `${displayMinutes}:${displaySeconds}`
@@ -95,12 +96,12 @@ export class MultimediaService {
     const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds
     const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes
     const displayFormat = `-${displayMinutes}:${displaySeconds}`
+
     this.timeRemaining$.next(displayFormat)
   }
 
   public setAudio(track: TracksModel): void {
     this.audio.src = track.url
-
     this.audio.play() 
  
   } 
