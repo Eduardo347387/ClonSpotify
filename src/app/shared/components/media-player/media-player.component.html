@@ -19,10 +19,13 @@
 
 <ng-template #artistZone>
     <div class="artist-inside" *ngIf="_multimediaService.trackInfo$ | async as mockCover">
-        <img appImgBroken [src]="mockCover.cover" alt="" class="cover">
+        <div class="box-cover">
+            <img appImgBroken [src]="mockCover.cover" alt="" class="cover">
+        </div>
+       
         <div class="track-info">
-            <h3 class="track-title">{{mockCover.name}}</h3>
-            <h5 class="track-title sub-title">{{mockCover?.album}}</h5>
+            <span class="track-title">{{mockCover.name | truncateText:30}}</span>
+            <span class="track-title sub-title">{{mockCover?.album | truncateText:10}}</span>
         </div>
         <div class="track-like">
             <button class="btn-like">
@@ -50,6 +53,7 @@
         <div class="media-linetime">
 
             <div class="time">{{_multimediaService.timeElapsed$ | async}}</div>
+            
             <span #progressBar (click)="handlePosition($event)" class="time-progress">
                 <span class="time-progress-live" [style.width]="(_multimediaService.playerPercentage$| async)+'%'">
                 </span>

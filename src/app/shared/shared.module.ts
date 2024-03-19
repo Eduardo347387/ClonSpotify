@@ -10,6 +10,7 @@ import { PlayListBodyComponent } from './components/play-list-body/play-list-bod
 import { RouterModule } from '@angular/router';
 import { OrderListPipe } from './pipes/order-list.pipe';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
+import { TruncateTextPipe } from './pipes/truncate-text.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
     PlayListHeaderComponent,
     PlayListBodyComponent,
     OrderListPipe,
+    TruncateTextPipe,
     ImgBrokenDirective
   ],
   imports: [
@@ -36,7 +38,8 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
     PlayListBodyComponent,
     PlayListHeaderComponent,
     OrderListPipe,
-    ImgBrokenDirective
+    ImgBrokenDirective,
+    TruncateTextPipe
   ]
 })
 export class SharedModule { }

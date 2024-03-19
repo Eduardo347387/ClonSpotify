@@ -2,13 +2,16 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@an
 import { TracksModel } from '@core/models/tracks.model';
 import { TracksService } from '@modules/tracks/services/tracks.service';
 import { TracksModule } from '@modules/tracks/tracks.module';
+import { TruncateTextPipe } from '@shared/pipes/truncate-text.pipe';
 import { MultimediaService } from '@shared/services/multimedia.service';
 import { Subscription} from 'rxjs';
 
 @Component({
+
   selector: 'app-media-player',
   templateUrl: './media-player.component.html',
-  styleUrls: ['./media-player.component.scss']
+  styleUrls: ['./media-player.component.scss'],
+
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy{
   @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('');
@@ -69,6 +72,7 @@ export class MediaPlayerComponent implements OnInit, OnDestroy{
     }
   }
 
+  
   handlePosition(event: MouseEvent): void{
     const elNative: HTMLElement = this.progressBar.nativeElement;
     const { clientX } = event
