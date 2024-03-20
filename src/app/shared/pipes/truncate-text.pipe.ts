@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'truncateText'
 })
 export class TruncateTextPipe implements PipeTransform {
-  transform(value: string, maxLength: number): string {
+  transform(value: string | undefined, maxLength: number): string {
     if (!value) return ''; // Manejar el caso de valor nulo o indefinido
     if (value.length <= maxLength) return value; // Retornar el valor sin modificar si es menor o igual a la longitud máxima
 

@@ -25,7 +25,7 @@ export class PlayListBodyComponent implements OnInit, OnDestroy{
   } = {
     property: null,
     order: 'asc'
-    }
+  }
   
 
   ngOnInit(): void {
@@ -34,7 +34,8 @@ export class PlayListBodyComponent implements OnInit, OnDestroy{
         next: track => {
           if (track) {
             this.idTrack = track._id
-        }
+          }
+
       }
     })
     this.listObservable$ = [observer1$]

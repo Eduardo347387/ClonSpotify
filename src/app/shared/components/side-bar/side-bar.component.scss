@@ -11,8 +11,9 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        opacity: .8;
+       
         .list-wrapper-item{
+            opacity: .8;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,6 +45,7 @@
      .side-bar__list{
         flex-direction: column;
         .list-wrapper-item{
+            cursor: pointer;
             flex-direction: row;
             column-gap: 1.3rem;
             .uil{
@@ -51,6 +53,12 @@
             }
             .list-label{
                 font-size: .9rem;
+            }
+            &:hover{
+                opacity: 1;
+                .list-label{
+                    color: azure;
+                }
             }
         }
     }

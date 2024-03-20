@@ -1,5 +1,5 @@
 .search-component {
-    padding: 0 1.5rem;
+    padding: 3.6rem 1.5rem 0 1.5rem;
 }
 
 .search-component input {
@@ -9,4 +9,12 @@
     width: 20rem;
     padding: 0 .75rem;
     font-size: 90%;
+}
+
+@media(max-width:400px){
+    .search-component input {
+       
+        width: 15rem;
+    
+    }
 }

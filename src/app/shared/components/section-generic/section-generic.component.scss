@@ -1,20 +1,40 @@
-.section--generic {
- 
-    margin-bottom: 2rem;
+
+.section--generic{
+    padding-top: 2rem;
+    .section--generic__title{
+        font-size: 1.6rem;
+    }
+    .section--generic__player--zone{
+        .player--list{
+            display: grid;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.15rem;
+        }
+        .card-small {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 }
 
-.section--generic__player--zone .player--list {
-    display: grid;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 1.15rem;
+@media(min-width:500px){
+    .section--generic{
+        .section--generic__player--zone{
+            .card-big{
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    }
 }
 
-.section--generic__player--zone .player--list.card-small {
-    grid-template-columns: repeat(5, 1fr);
-}
-
-.section--generic__player--zone .player--list.card-big {
-    grid-template-columns: repeat(6, minmax(100px, 1fr));
+@media(min-width:1100px){
+    .section--generic {
+        .section--generic__player--zone {
+            .card-small {
+                column-gap: 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+    }
 }

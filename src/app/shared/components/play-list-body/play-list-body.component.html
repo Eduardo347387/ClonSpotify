@@ -1,8 +1,8 @@
 <div class="play-list-body">
     <ul class="play-list-table-header">
         <li (click)="changeSort('name')">Nombre</li>
-        <li>álbum</li>
-        <li>fecha incorporación</li>
+        <li class="header-album">álbum</li>
+        <li class="header-date">fecha incorporación</li>
         <li><i class="uil uil-clock-eight"></i></li>
     </ul>
     <ul (click)="sedPlay(track)" class="play-list-rows"  *ngFor="let track of tracks |orderList:optionSort.property:optionSort.order">
@@ -12,10 +12,10 @@
         <li class="track-name-opacity">
             {{track.album }}
         </li>
-        <li class="track-name-opacity">
+        <li class="track-name-opacity date">
             Fed,11,2024
         </li>
-        <li class="track-name-opacity">
+        <li class="track-name-opacity clock">
             3:43
         </li>
 

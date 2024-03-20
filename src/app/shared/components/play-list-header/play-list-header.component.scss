@@ -1,66 +1,110 @@
 .play-list-header {
     display: flex;
-    height: 20rem;
     width: 100%;
-    padding-top: 3rem;
-    padding-bottom: 1rem;
-    background-color: #ffffff14;
-}
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+    background: linear-gradient(to bottom, #405de6, #5851db, #833ab4);
+    border-bottom-left-radius: 3rem;
+  
+    .cover{
+        display: none;
+    }
 
-.user{
-    display: flex;
-    align-items: center;
-    column-gap: .4rem;
-    .avatar{
-        border-radius: 50%;
-        width: 1.8rem;   
+    .content-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        .small-text {
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .title {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        .user {
+            margin-top: .3rem;
+            display: flex;
+            align-items: center;
+            column-gap: .4rem;
+
+            .avatar {
+                border-radius: 50%;
+                width: 1.8rem;
+            }
+            .sub-title {
+                margin: 0;
+                font-weight: 600;
+            }
+            .count-tracks {
+                font-weight: 300;
+                opacity: .7;
+                padding-left: .5rem;
+            }
+        }
     }
 }
 
-.content-text { 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+@media(min-width:820px){
+    .play-list-header{
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+        align-items: center;
+        .cover{
+            position: relative;
+            width: 10rem;
+            height: 10rem;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+
+            .cover-mock {
+                height: 100%;
+                width: 18rem;
+                display: flex;
+                align-self: center;
+                justify-content: center;
+                align-items: center;
+                font-size: 5.5rem;
+                background: linear-gradient(135deg, #405de6, #837cff);
+                box-shadow: var(--shadow-1);
+            }
+            
+        }
+        .content-text {
+            max-width: 20rem;
+            .user{
+                margin-top: 1.5rem;
+            }
+        }
+    }
+    
 }
 
-.cover {
-    position: relative;
-    width: 17rem;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: center;
+@media(min-width:1100px){
+    .play-list-header{
+        .content-text{
+            max-width: 40rem;
+            .title{
+                font-size: 2.8rem;
+            }
+        }
+    }
 }
 
-.cover .cover-mock {
-    height: 100%;
-    width: 18rem;
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    font-size: 5.5rem;
-    background-color: var(--color-2);
-    box-shadow: var(--shadow-1);
+@media(min-width:1200px) {
+    .play-list-header {
+        .content-text {
+            max-width: 40rem;
+            .title {
+                font-size: 3.5rem;
+                line-height: 4rem;
+            }
+        }
+    }
 }
 
-.content-text .title,
-.content-text .sub-title {
-    margin: 0;
-    font-weight: 600;
-}
 
-.content-text .title {
-    font-size: 6rem;
-    letter-spacing: -7px;
-}
 
-.content-text .small-text {
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.content-text .count-tracks {
-    font-weight: 300;
-    opacity: .7;
-    padding-left: .5rem;
-}

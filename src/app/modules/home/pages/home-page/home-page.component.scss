@@ -2,11 +2,12 @@
     background: rgb(23, 23, 26);
     background: linear-gradient(90deg, rgba(23, 23, 26, 1) 44%, rgba(24, 24, 24, 1) 100%);
     min-height: 100vh;
-    padding-bottom: 4rem;
+    padding-bottom: 9rem;
 }
 
 @media(min-width:760px){
    .home-wrapper{
      margin: 0 0 0 17.5rem;
+        padding-bottom: 6.5rem;
    }
 }
